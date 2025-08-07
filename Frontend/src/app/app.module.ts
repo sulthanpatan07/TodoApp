@@ -7,18 +7,22 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoformComponent } from './todoform/todoform.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
     TodoformComponent,
-    TodolistComponent
+    TodolistComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

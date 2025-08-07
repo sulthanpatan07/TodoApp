@@ -1,4 +1,15 @@
-<div class="container">
-  <app-todoform></app-todoform>
-  <app-todolist></app-todolist>
-</div>
+<nav class="navbar">
+  <div class="container">
+     <a id=nav1 class="navbar-brand" routerLink="/TodoForm">
+      TodoForm
+    </a>
+     <a id=nav2 class="navbar-brand" routerLink="/TodoList">
+      TodoList
+    </a>
+     <a id=nav3 class="navbar-brand" routerLink="/login">
+      Login
+    </a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

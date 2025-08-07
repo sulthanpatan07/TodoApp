@@ -1,15 +1,26 @@
-<h1 class="text-center text-primary">Todo App in Angular</h1>
-<div class="row">
-    <div class="col-6">
-        <div class="form-group">
-            <label for="newTask">Add New</label>
-            <input type="text" class="form-control" id="newTask" [(ngModel)] ='todoInput'>
-        </div>
+<div class="container">
+  <h1 class="text-center" id="title">Add Task</h1>
+
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="form-group">
+        <p id="addn"><label>Add New:</label></p>
+        <input type="text" class="form-control" placeholder="add task" id="take" [(ngModel)]="todoInput"><br><br>
+      </div>
     </div>
-    <div class="col-3 mt-4">                                           
-        <button class="btn btn-success" (click)="addTask()" [disabled]=!todoInput.length>Add</button>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-6 offset-3 text-center">
+      <button class="btn btn-success me-2"
+              (click)="addTask()"
+              [disabled]="!todoInput || todoInput.length === 0"
+              id="add">Add</button><br><br>
+
+      <button class="btn btn-danger"
+              (click)="resetForm()"
+              [disabled]="!todoInput || todoInput.length === 0"
+              id="reset">Reset</button>
     </div>
-    <div class="col-3 mt-4">
-        <button class="btn btn-danger"(click)="resetForm()" [disabled]=!todoInput.length>Reset</button>
-    </div>
+  </div>
 </div>

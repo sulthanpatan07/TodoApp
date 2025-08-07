@@ -1,0 +1,39 @@
+<br><br><br><br>
+<div class="container" [ngClass]="{ 'right-panel-active': isSignUpMode }">
+  <!-- SIGN UP FORM -->
+  <div class="form-container text-center sign-up-container">
+    <form #signupForm="ngForm" (ngSubmit)="onCreateAccount(signupForm)">
+      <h1 id="hea">Create Account</h1><br>
+      <input type="text" name="username" ngModel placeholder="Name" required id="inp"/><br><br>
+      <input type="email" name="email" ngModel placeholder="Email" required id="inp"/><br><br>
+      <input type="password" name="password" ngModel placeholder="Password" required id="inp"/><br><br>
+      <input type="submit" value="Create Account" id="subm"/>
+    </form>
+  </div>
+
+  <!-- SIGN IN FORM -->
+  <div class="form-container text-center sign-in-container">
+  <form #signinForm="ngForm" (ngSubmit)="onSignIn(signinForm)">
+    <h1 id="hea">Sign In</h1><br>
+    <input type="email" name="email" ngModel placeholder="Email" required id="inp"/><br><br>
+    <input type="password" name="password" ngModel placeholder="Password" required id="inp" style="border-style: double;border-width: 8px;border-radius: 10px;border-color: aquamarine;"/><br><br>
+    <button type="submit" id="subm">Sign In</button>
+  </form>
+</div>
+
+  <!-- OVERLAY TOGGLE -->
+  <div class="overlay-container text-center">
+    <div class="overlay text-center">
+      <div class="overlay-panel overlay-panel">
+        <h1>Welcome Back!</h1>
+        <p>Please login with your personal info</p>
+        <button class="ghost" (click)="switchMode(false)" id="butt">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your details and start your journey with us</p>
+        <button class="ghost" (click)="switchMode(true)" id="butt">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>

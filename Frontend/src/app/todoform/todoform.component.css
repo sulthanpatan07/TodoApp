@@ -1,3 +1,21 @@
 button{
     width: 100%;
 }
+#add{
+    padding-right:50px;
+    padding-left:50px;
+}
+#addn{
+    font-weight: 900;
+    font-size: 30px;
+    color: brown;
+}
+#take{
+    border-width: 8px;
+    border-color: rgb(182, 153, 208);
+}
+#title{
+    font-size:100px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(12, 52, 231);
+}

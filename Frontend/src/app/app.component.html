@@ -1,15 +1,15 @@
-<nav class="navbar">
-  <div class="container">
-     <a id=nav1 class="navbar-brand" routerLink="/TodoForm">
-      TodoForm
-    </a>
-     <a id=nav2 class="navbar-brand" routerLink="/TodoList">
-      TodoList
-    </a>
-     <a id=nav3 class="navbar-brand" routerLink="/login">
-      Login
-    </a>
-  </div>
-</nav>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" id="nav1" aria-current="page" routerLink="/TodoForm">TodoForm</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="nav1" routerLink="/TodoList">TodoList</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="nav1" routerLink="/login">Login</a>
+  </li>
+</ul>
 
-<router-outlet></router-outlet>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

@@ -1,30 +1,31 @@
-div{
-    background: linear-gradient(to right, #1181c7, #7c40a1);
-}
-a{
-    color: rgb(23, 228, 12);
-    text-decoration: none;
-    font-size: xx-large;
-    font-weight: bold;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-#nav3{
-    color: rgb(217, 223, 46);
-
-}
-#nav3:hover{
-    color: rgb(102, 214, 83);
-}
-#nav2{
-    color:#e1cd37;
-}
-#nav2:hover{
-    color: rgb(102, 214, 83);
-}
-#nav3{
-    color:#e1cd37;
-}
-#nav3:hover{
-    color: rgb(102, 214, 83);
+.nav {
+  background: transparent;
+  color: blue;
+  padding: 12px 0;
+  height: 70px;
 }
 
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff176;
+}
+#nav1{
+    color: rgb(76, 58, 218);
+    background-color:rgb(182, 221, 115);
+    font-weight: 900;
+    
+}
+#nav1:hover{
+    color:rgb(182, 221, 115);
+    background-color:rgb(76, 58, 218);
+}

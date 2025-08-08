@@ -10,22 +10,14 @@
 }
 
 .nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #fff176;
-}
-#nav1{
-    color: rgb(76, 58, 218);
-    background-color:rgb(182, 221, 115);
-    font-weight: 900;
-    
-}
-#nav1:hover{
-    color:rgb(182, 221, 115);
-    background-color:rgb(76, 58, 218);
+  border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 }

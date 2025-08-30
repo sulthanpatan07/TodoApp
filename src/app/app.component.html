@@ -1,0 +1,73 @@
+<header class="glass-header py-4 mb-4 shadow position-relative">
+  <div class="container-xl">
+    <div class="d-flex flex-column flex-md-row align-items-center gap-3">
+      <div>
+        <h1 class="fw-bold display-5 m-0 text-white">✨ DayPlan</h1>
+        <div class="fw-light text-white-50">{{ today | date: 'fullDate' }}</div>
+      </div>
+      <form [formGroup]="todoForm" (ngSubmit)="submitTask()" class="ms-md-auto w-100 w-md-auto d-flex gap-2 align-items-center glass-form">
+        <input
+          type="text"
+          style="border-width: 2px;"
+          class="form-control form-control-lg glass-input"
+          formControlName="title"
+          placeholder="Add a new task..."
+          [class.is-invalid]="todoForm.get('title')?.invalid && todoForm.get('title')?.touched"
+          required
+        >
+        <button class="btn btn-pink btn-lg px-4 shadow" [disabled]="todoForm.invalid" type="submit">
+          <i class="fas fa-plus"></i> Add
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+<div class="container-xl mb-3">
+  <div class="filter-chips d-flex gap-2 overflow-auto py-2">
+    <button class="chip btn btn-outline-light text-warning fw-bold px-3"
+            [class.active]="activeFilter==='all'"
+            (click)="setFilter('all')">All</button>
+    <button class="chip btn btn-outline-light text-danger px-3"
+            [class.active]="activeFilter==='overdue'"
+            (click)="setFilter('overdue')">Overdue</button>
+    <button class="chip btn btn-outline-light text-warning px-3"
+            [class.active]="activeFilter==='today'"
+            (click)="setFilter('today')">Today</button>
+    <button class="chip btn btn-outline-light text-success px-3"
+            [class.active]="activeFilter==='completed'"
+            (click)="setFilter('completed')">Completed</button>
+  </div>
+</div>
+<div class="container-xl">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    <div class="col" *ngFor="let todo of filteredTodos$ | async; trackBy: trackByTodo">
+      <div class="card task-card p-3 border-0 animate-pop"
+           [ngClass]="{
+             'bg-glass-danger': todo.priority==='high',
+             'bg-glass-warning': todo.priority==='medium',
+             'bg-glass-success': todo.priority==='low',
+             'opacity-50': todo.completed
+           }">
+        <div class="d-flex align-items-center mb-2">
+          <span class="me-2 fs-2">{{ getPriorityIcon(todo.priority) }}</span>
+          <span class="fw-semibold fs-5 flex-grow-1" [class.text-decoration-line-through]="todo.completed">
+            {{todo.title}}
+          </span>
+          <input class="form-check-input ms-2" type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo.id)">
+        </div>
+        <p class="mb-2 small text-white-50">{{ todo.description }}</p>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge bg-white-50 text-dark"><i class="fas fa-calendar"></i> {{ todo.dueDate | date:'MMM d' }}</span>
+          <span *ngIf="isOverdue(todo)" class="badge bg-danger text-white">Overdue</span>
+          <span *ngIf="isDueSoon(todo)" class="badge bg-warning text-dark">Due Soon</span>
+          <button class="btn btn-sm btn-light ms-auto" (click)="openEditTask(todo.id)">
+            <i class="fas fa-pen"></i>
+          </button>
+          <button class="btn btn-sm btn-danger ms-2" (click)="deleteTodo(todo.id)">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

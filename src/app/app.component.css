@@ -1,0 +1,160 @@
+.todo-item {
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+  border-left-color: #28a745;
+}
+
+.todo-item.border-danger {
+  border-left-color: #dc3545;
+}
+.dashboard-header {
+  background: linear-gradient(90deg, #1d8cf8 0%, #3358f4 100%);
+  border-radius: 0 0 32px 32px;
+}
+.summary-card { min-width: 120px; }
+.bg-gradient-danger { background: linear-gradient(135deg,#f43f5e 10%,#f59e42 100%)!important; color:#fff; }
+.bg-gradient-warning { background: linear-gradient(135deg,#fbbf24 0%,#fde68a 100%)!important; color:#212529; }
+.bg-gradient-success { background: linear-gradient(135deg,#4ade80 10%,#22d3ee 100%)!important; color:#212529; }
+.task-card { border-radius: 1.5rem; transition: box-shadow .2s; }
+.fab { box-shadow: 0 8px 24px rgba(44,62,80,.18); }
+.filter-chips .chip.active { border-color: #1d8cf8; background: #eaf6ff; font-weight: bold; }
+
+.btn-gradient {
+  background: linear-gradient(90deg, #36d1c4 0%, #5b86e5 100%);
+  color: #fff;
+  border: none;
+  transition: box-shadow .2s;
+}
+.glass-header {
+  background: linear-gradient(120deg, #fe90afcc 10%, #8781ffcc 100%);
+  border-radius: 0 0 2rem 2rem;
+  backdrop-filter: blur(8px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(80,30,100,.15);
+}
+.glass-form .form-control {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  
+  color: #fff;
+}
+.glass-form .form-control::placeholder { color: #fff8; }
+.glass-form .btn-pink {
+  background: linear-gradient(90deg, #fe90af, #ef5fa7);
+ 
+  color: #fff;
+  font-weight: 600;
+}
+.filter-chips .chip.active, .filter-chips .chip:focus {
+  background: linear-gradient(90deg,#fea0cf,#a18fff)!important;
+  color: #fff!important;
+}
+.bg-glass-danger   { background: linear-gradient(120deg,#fd607b88,#ea76e388)!important; color: #fff; }
+.bg-glass-warning  { background: linear-gradient(120deg,#ffda7688,#fda08588)!important; color: #4d2d0c; }
+.bg-glass-success  { background: linear-gradient(120deg,#55dfa988,#8cf5eb88)!important; color: #114036; }
+.card.task-card    { border-radius: 1.5rem; box-shadow: 0 4px 36px #0001; transition: box-shadow .2s; }
+.card.task-card:hover { box-shadow: 0 8px 40px #c81a8e32; }
+.animate-pop       { animation: pop-in 0.4s cubic-bezier(.45,1.8,.48,1.13); }
+@keyframes pop-in { from { transform: scale(.92); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+.btn-gradient:hover, .btn-gradient:focus {
+  box-shadow: 0 0.125rem 0.25rem rgba(44, 62, 80, 0.18);
+  color: #fff;
+}
+.card {
+  border-radius: 1rem;
+}
+
+.todo-item.border-warning {
+  border-left-color: #ffc107;
+}
+
+.form-check-input:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-group .btn-check:checked + .btn {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+.todo-list {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.card {
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.display-5 {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 0.5rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem !important;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn {
+    border-radius: 0.375rem !important;
+    margin-bottom: 0.25rem;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .input-group .form-control {
+    margin-bottom: 0.5rem;
+    border-radius: 0.375rem !important;
+  }
+  
+  .input-group .btn {
+    border-radius: 0.375rem !important;
+  }
+}
+
+/* Font Awesome Icons (add to index.html) */
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}

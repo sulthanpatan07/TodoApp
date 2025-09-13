@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Observable, combineLatest, map } from 'rxjs';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { Observable, map } from 'rxjs';
 import { Todo } from './models/todo.model';
 import { TodoService } from './services/todo.service';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // <--- Fixes all *ngFor, *ngIf, date, ngClass, formGroup etc.
+  imports: [CommonModule, ReactiveFormsModule,FormsModule],
 })
 export class App implements OnInit {
   todoForm: FormGroup;
@@ -23,6 +23,7 @@ export class App implements OnInit {
 
   activeFilter: 'all' | 'overdue' | 'today' | 'completed' = 'all';
   sortBy: 'createdAt' | 'dueDate' | 'priority' | 'title' = 'createdAt';
+  viewMode: 'grid' | 'kanban' = 'grid';
 
   today: string = new Date().toISOString().split('T')[0];
   selectedForDeletion = new Set<number>();
@@ -52,24 +53,45 @@ export class App implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todos$.subscribe(todos => {
-      if (todos.length === 0) {
-        this.addSampleTodos();
-      }
-    });
+    const hasSampleData = localStorage.getItem('sampleAdded');
+
+    if (!hasSampleData) {
+      this.todos$.subscribe(todos => {
+        if (todos.length === 0) {
+          this.addSampleTodos();
+          localStorage.setItem('sampleAdded', 'true'); // ✅ Add only once
+        }
+      }).unsubscribe();
+    }
   }
 
   private addSampleTodos(): void {
-    this.todoService.addTodo('Review project documentation', 'Go through all the requirements...', this.getFutureDateISO(1), 'high');// and same for other usages
-    
-    this.todoService.addTodo('Team meeting preparation', undefined, this.getFutureDateISO(2), 'medium');
-    this.todoService.addTodo('Code review', 'Review pull requests from team members', undefined, 'low');
+    this.todoService.addTodo(
+      'Review project documentation',
+      'Go through all the requirements...',
+      this.getFutureDateISO(1),
+      'high'
+    );
+
+    this.todoService.addTodo(
+      'Team meeting preparation',
+      undefined,
+      this.getFutureDateISO(2),
+      'medium'
+    );
+
+    this.todoService.addTodo(
+      'Code review',
+      'Review pull requests from team members',
+      undefined,
+      'low'
+    );
   }
 
   private getFutureDateISO(daysAhead: number): string {
     const d = new Date();
     d.setDate(d.getDate() + daysAhead);
-    return d.toISOString().split('T')[0]; // returns 'YYYY-MM-DD'
+    return d.toISOString().split('T')[0];
   }
 
   submitTask() {
@@ -82,7 +104,7 @@ export class App implements OnInit {
     if (this.editing && this.selectedTaskId !== null) {
       this.todoService.updateTodo(this.selectedTaskId, {
         ...data,
-        dueDate: data.dueDate ? data.dueDate : undefined // always string or undefined
+        dueDate: data.dueDate ? data.dueDate : undefined
       });
     } else {
       this.todoService.addTodo(
@@ -136,7 +158,7 @@ export class App implements OnInit {
         case 'priority':
           const priorityOrder = { high: 3, medium: 2, low: 1 };
           return (priorityOrder[b.priority] ?? 0) - (priorityOrder[a.priority] ?? 0);
-        default: // createdAt
+        default:
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       }
     });

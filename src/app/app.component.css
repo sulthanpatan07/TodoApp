@@ -66,6 +66,16 @@
   background: linear-gradient(135deg, #ff5e62, #ff9966);
 }
 
+
+#sortby{
+  border-color: #a8e063;
+  border-width: 0px;
+  border-radius: 15px;
+  padding: 0.5rem;
+  font-weight: 900;
+  color: #44a559;
+}
+
 /* Controls */
 .controls {
   display: flex;

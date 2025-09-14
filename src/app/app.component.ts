@@ -22,7 +22,7 @@ export class App implements OnInit {
   selectedTaskId: number | null = null;
 
   activeFilter: 'all' | 'overdue' | 'today' | 'completed' = 'all';
-  sortBy: 'createdAt' | 'dueDate' | 'priority' | 'title' = 'createdAt';
+  sortBy: 'createdAt' | 'dueDate' | 'priority' | 'title' = 'priority';
   viewMode: 'grid' | 'kanban' = 'grid';
 
   today: string = new Date().toISOString().split('T')[0];
